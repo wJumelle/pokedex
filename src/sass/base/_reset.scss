@@ -1,0 +1,18 @@
+@use "../abstracts" as *;
+
+/**********************
+ * RESET
+*********************/
+*, *::after, *::before {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    font-family: $ff;
+    font-size: $font-size;
+    line-height: 1.5em;
+}
+
+button {
+    border: 1px solid #000;
+    background: none;
+    cursor: pointer;
+}

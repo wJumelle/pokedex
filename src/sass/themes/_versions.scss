@@ -1,0 +1,366 @@
+@use "../abstracts" as *;
+
+.version-red { 
+    color: $version-red;
+
+    button {
+        color: $version-red;
+        border: 1px solid $version-red;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-red;
+        }
+    }
+}
+.version-blue { 
+    color: $version-blue;
+
+    button {
+        color: $version-blue;
+        border: 1px solid $version-blue;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-blue;
+        }
+    }
+}
+.version-yellow { 
+    color: $version-yellow;
+
+    button {
+        color: $version-yellow;
+        border: 1px solid $version-yellow;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-yellow;
+        }
+    }
+}
+.version-firered { 
+    color: $version-fireRed;
+
+    button {
+        color: $version-fireRed;
+        border: 1px solid $version-fireRed;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-fireRed;
+        }
+    }
+}
+.version-leafgreen { 
+    color: $version-leafGreen;
+
+    button {
+        color: $version-leafGreen;
+        border: 1px solid $version-leafGreen;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-leafGreen;
+        }
+    }
+}
+.version-gold {
+    color: $version-gold;
+
+    button {
+        color: $version-gold;
+        border: 1px solid $version-gold;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-gold;
+        }
+    }
+}
+.version-silver {
+    color: $version-silver;
+
+    button {
+        color: $version-silver;
+        border: 1px solid $version-silver;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-silver;
+        }
+    }
+}
+.version-crystal {
+    color: $version-crystal;
+
+    button {
+        color: $version-crystal;
+        border: 1px solid $version-crystal;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-crystal;
+        }
+    }
+}
+.version-heartgold {
+    color: $version-heartgold;
+
+    button {
+        color: $version-heartgold;
+        border: 1px solid $version-heartgold;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-heartgold;
+        }
+    }
+}
+.version-soulsilver {
+    color: $version-soulsilver;
+
+    button {
+        color: $version-soulsilver;
+        border: 1px solid $version-soulsilver;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-soulsilver;
+        }
+    }
+}
+.version-ruby {
+    color: $version-ruby;
+
+    button {
+        color: $version-ruby;
+        border: 1px solid $version-ruby;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-ruby;
+        }
+    }
+}
+.version-sapphire {
+    color: $version-sapphire;
+
+    button {
+        color: $version-sapphire;
+        border: 1px solid $version-sapphire;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-sapphire;
+        }
+    }
+}
+.version-emerald {
+    color: $version-emerald;
+
+    button {
+        color: $version-emerald;
+        border: 1px solid $version-emerald;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-emerald;
+        }
+    }
+}
+.version-omegaRuby {
+    color: $version-omegaRuby;
+
+    button {
+        color: $version-omegaRuby;
+        border: 1px solid $version-omegaRuby;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-omegaRuby;
+        }
+    }
+}
+.version-alphaSapphire {
+    color: $version-alphaSapphire;
+
+    button {
+        color: $version-alphaSapphire;
+        border: 1px solid $version-alphaSapphire;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-alphaSapphire;
+        }
+    }
+}
+.version-diamond {
+    color: $version-diamond;
+
+    button {
+        color: $version-diamond;
+        border: 1px solid $version-diamond;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-diamond;
+        }
+    }
+}
+.version-pearl {
+    color: $version-pearl;
+
+    button {
+        color: $version-pearl;
+        border: 1px solid $version-pearl;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-pearl;
+        }
+    }
+}
+.version-platinum {
+    color: $version-platinum;
+
+    button {
+        color: $version-platinum;
+        border: 1px solid $version-platinum;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-platinum;
+        }
+    }
+}
+.version-black, .version-black2 {
+    color: $version-black;
+
+    button {
+        color: $version-black;
+        border: 1px solid $version-black;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-black;
+        }
+    }
+}
+.version-white, .version-white2 {
+    color: $version-white;
+
+    button {
+        color: $version-white;
+        border: 1px solid $version-white;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-white;
+        }
+    }
+}
+.version-x {
+    color: $version-x;
+
+    button {
+        color: $version-x;
+        border: 1px solid $version-x;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-x;
+        }
+    }
+}
+.version-y {
+    color: $version-y;
+
+    button {
+        color: $version-y;
+        border: 1px solid $version-y;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-y;
+        }
+    }
+}
+.version-sun {
+    color: $version-sun;
+
+    button {
+        color: $version-sun;
+        border: 1px solid $version-sun;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-sun;
+        }
+    }
+}
+.version-moon {
+    color: $version-moon;
+
+    button {
+        color: $version-moon;
+        border: 1px solid $version-moon;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-moon;
+        }
+    }
+}
+.version-ultraSun {
+    color: $version-ultraSun;
+
+    button {
+        color: $version-ultraSun;
+        border: 1px solid $version-ultraSun;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-ultraSun;
+        }
+    }
+}
+.version-ultraMoon {
+    color: $version-ultraMoon;
+
+    button {
+        color: $version-ultraMoon;
+        border: 1px solid $version-ultraMoon;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-ultraMoon;
+        }
+    }
+}
+.version-sword {
+    color: $version-sword;
+
+    button {
+        color: $version-sword;
+        border: 1px solid $version-sword;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-sword;
+        }
+    }
+}
+.version-shield {
+    color: $version-shield;
+
+    button {
+        color: $version-shield;
+        border: 1px solid $version-shield;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-shield;
+        }
+    }
+}

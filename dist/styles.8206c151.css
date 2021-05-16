@@ -1,0 +1,945 @@
+@keyframes loader {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/***************
+ = Color vars */
+/***************
+ = Fonts vars */
+/**********************
+ * RESET
+*********************/
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  line-height: 1.5em;
+}
+
+button {
+  border: 1px solid #000;
+  background: none;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+[data-pokedex-container=pokemonFromTypeList] .pokedex-pokemonList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  list-style-type: none;
+  text-align: center;
+}
+[data-pokedex-container=pokemonFromTypeList] .pokedex-pokemonList__elem {
+  position: relative;
+  background: #FFF;
+  border-radius: 25px;
+  box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  color: #000;
+}
+[data-pokedex-container=pokemonFromTypeList] .pokedex-pokemonList__elem::before {
+  content: "";
+  width: 70%;
+  height: 90%;
+  max-height: 200px;
+  display: block;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  z-index: 5;
+  transition: top 0.25s, width 0.25s, height 0.25s;
+}
+[data-pokedex-container=pokemonFromTypeList] .pokedex-pokemonList__elem:hover::before {
+  width: 100%;
+  top: 0;
+  height: 100%;
+  max-height: 100%;
+  border-radius: 25px;
+}
+[data-pokedex-container=pokemonFromTypeList] .pokedex-pokemonList__elem > * {
+  position: relative;
+  z-index: 10;
+}
+[data-pokedex-container=pokemonFromTypeList] .pokedex-pokemonList__elem img {
+  z-index: 20;
+  display: block;
+  max-width: 150px;
+  margin: 0 auto 2rem;
+}
+[data-pokedex-container=pokemonFromTypeList] .pokedex-pokemonList__elem .pokemon-types__container {
+  font-weight: 700;
+}
+[data-pokedex-container=pokemonFromTypeList] .pokedex-pokemonList__elem .pokemon-types__container li {
+  padding: 0.25rem;
+}
+
+.pokeball-container .pokeball {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(red 50%, white 50%);
+  border-radius: 50%;
+  border: 8px solid black;
+  animation-name: loader;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.pokeball-container .pokeball::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  background: black;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.pokeball-container .pokeball-button {
+  width: 40px;
+  height: 40px;
+  background: #FFF;
+  border-radius: 50%;
+  border: 8px solid black;
+  position: relative;
+  z-index: 20;
+}
+.pokeball-container .pokedex-cpt {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+.pokeball-container .pokedex-cpt span {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.pokedex-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url("/PokemonSymbol.aab06f94.svg");
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: bottom 2500% right -20%;
+}
+.pokedex-container h1 {
+  display: block;
+}
+.pokedex-container ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 50%;
+}
+.pokedex-container ul li {
+  display: inline-block;
+  padding: 10px 20px;
+}
+.pokedex-container ul li button {
+  background: #FFF;
+  padding: 10px 20px;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+.pokedex-container:nth-child(odd) {
+  background-color: #E6EFE9;
+}
+
+.pokedex-container:nth-child(even) {
+  background-color: #CAD9E2;
+}
+
+.pokedex-pokemonList-container {
+  padding: 2% 5%;
+}
+.pokedex-pokemonList-container h1 {
+  text-align: center;
+  margin-bottom: 1.125rem;
+}
+
+.type-normal {
+  color: #A8A77A;
+}
+.type-normal button {
+  color: #A8A77A;
+  border: 1px solid #A8A77A;
+}
+.type-normal button:hover, .type-normal button:focus {
+  background: #A8A77A;
+  color: #FFF;
+}
+.type-normal.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #A8A77A;
+}
+.type-normal.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: #efeee6;
+}
+.pokemon-types__container .type-normal {
+  color: #FFF;
+  background: #A8A77A;
+}
+
+.type-fire {
+  color: #EE8130;
+}
+.type-fire button {
+  color: #EE8130;
+  border: 1px solid #EE8130;
+}
+.type-fire button:hover, .type-fire button:focus {
+  background: #EE8130;
+  color: #FFF;
+}
+.type-fire.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #EE8130;
+}
+.type-fire.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: #fce5d5;
+}
+.pokemon-types__container .type-fire {
+  color: #FFF;
+  background: #EE8130;
+}
+
+.type-water {
+  color: #6390F0;
+}
+.type-water button {
+  color: #6390F0;
+  border: 1px solid #6390F0;
+}
+.type-water button:hover, .type-water button:focus {
+  background: #6390F0;
+  color: #FFF;
+}
+.type-water.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #6390F0;
+}
+.type-water.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: white;
+}
+.pokemon-types__container .type-water {
+  color: #FFF;
+  background: #6390F0;
+}
+
+.type-electric {
+  color: #F7D02C;
+}
+.type-electric button {
+  color: #F7D02C;
+  border: 1px solid #F7D02C;
+}
+.type-electric button:hover, .type-electric button:focus {
+  background: #F7D02C;
+  color: #FFF;
+}
+.type-electric.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #F7D02C;
+}
+.type-electric.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: #fef6d8;
+}
+.pokemon-types__container .type-electric {
+  color: #FFF;
+  background: #F7D02C;
+}
+
+.type-grass {
+  color: #7AC74C;
+}
+.type-grass button {
+  color: #7AC74C;
+  border: 1px solid #7AC74C;
+}
+.type-grass button:hover, .type-grass button:focus {
+  background: #7AC74C;
+  color: #FFF;
+}
+.type-grass.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #7AC74C;
+}
+.type-grass.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: #dff2d4;
+}
+.pokemon-types__container .type-grass {
+  color: #FFF;
+  background: #7AC74C;
+}
+
+.type-ice {
+  color: #96D9D6;
+}
+.type-ice button {
+  color: #96D9D6;
+  border: 1px solid #96D9D6;
+}
+.type-ice button:hover, .type-ice button:focus {
+  background: #96D9D6;
+  color: #FFF;
+}
+.type-ice.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #96D9D6;
+}
+.type-ice.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: white;
+}
+.pokemon-types__container .type-ice {
+  color: #FFF;
+  background: #96D9D6;
+}
+
+.type-fighting {
+  color: #C22E28;
+}
+.type-fighting button {
+  color: #C22E28;
+  border: 1px solid #C22E28;
+}
+.type-fighting button:hover, .type-fighting button:focus {
+  background: #C22E28;
+  color: #FFF;
+}
+.type-fighting.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #C22E28;
+}
+.type-fighting.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: #eeb1ae;
+}
+.pokemon-types__container .type-fighting {
+  color: #FFF;
+  background: #C22E28;
+}
+
+.type-poison {
+  color: #A33EA1;
+}
+.type-poison button {
+  color: #A33EA1;
+  border: 1px solid #A33EA1;
+}
+.type-poison button:hover, .type-poison button:focus {
+  background: #A33EA1;
+  color: #FFF;
+}
+.type-poison.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #A33EA1;
+}
+.type-poison.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: #e2b2e1;
+}
+.pokemon-types__container .type-poison {
+  color: #FFF;
+  background: #A33EA1;
+}
+
+.type-ground {
+  color: #E2BF65;
+}
+.type-ground button {
+  color: #E2BF65;
+  border: 1px solid #E2BF65;
+}
+.type-ground button:hover, .type-ground button:focus {
+  background: #E2BF65;
+  color: #FFF;
+}
+.type-ground.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #E2BF65;
+}
+.type-ground.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: #fefdfb;
+}
+.pokemon-types__container .type-ground {
+  color: #FFF;
+  background: #E2BF65;
+}
+
+.type-flying {
+  color: #A98FF3;
+}
+.type-flying button {
+  color: #A98FF3;
+  border: 1px solid #A98FF3;
+}
+.type-flying button:hover, .type-flying button:focus {
+  background: #A98FF3;
+  color: #FFF;
+}
+.type-flying.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #A98FF3;
+}
+.type-flying.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: white;
+}
+.pokemon-types__container .type-flying {
+  color: #FFF;
+  background: #A98FF3;
+}
+
+.type-psychic {
+  color: #F95587;
+}
+.type-psychic button {
+  color: #F95587;
+  border: 1px solid #F95587;
+}
+.type-psychic button:hover, .type-psychic button:focus {
+  background: #F95587;
+  color: #FFF;
+}
+.type-psychic.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #F95587;
+}
+.type-psychic.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: white;
+}
+.pokemon-types__container .type-psychic {
+  color: #FFF;
+  background: #F95587;
+}
+
+.type-bug {
+  color: #A6B91A;
+}
+.type-bug button {
+  color: #A6B91A;
+  border: 1px solid #A6B91A;
+}
+.type-bug button:hover, .type-bug button:focus {
+  background: #A6B91A;
+  color: #FFF;
+}
+.type-bug.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #A6B91A;
+}
+.type-bug.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: #e5f095;
+}
+.pokemon-types__container .type-bug {
+  color: #FFF;
+  background: #A6B91A;
+}
+
+.type-rock {
+  color: #B6A136;
+}
+.type-rock button {
+  color: #B6A136;
+  border: 1px solid #B6A136;
+}
+.type-rock button:hover, .type-rock button:focus {
+  background: #B6A136;
+  color: #FFF;
+}
+.type-rock.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #B6A136;
+}
+.type-rock.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: #e9e1b5;
+}
+.pokemon-types__container .type-rock {
+  color: #FFF;
+  background: #B6A136;
+}
+
+.type-ghost {
+  color: #735797;
+}
+.type-ghost button {
+  color: #735797;
+  border: 1px solid #735797;
+}
+.type-ghost button:hover, .type-ghost button:focus {
+  background: #735797;
+  color: #FFF;
+}
+.type-ghost.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #735797;
+}
+.type-ghost.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: #cfc4dd;
+}
+.pokemon-types__container .type-ghost {
+  color: #FFF;
+  background: #735797;
+}
+
+.type-dragon {
+  color: #6F35FC;
+}
+.type-dragon button {
+  color: #6F35FC;
+  border: 1px solid #6F35FC;
+}
+.type-dragon button:hover, .type-dragon button:focus {
+  background: #6F35FC;
+  color: #FFF;
+}
+.type-dragon.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #6F35FC;
+}
+.type-dragon.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: #ece5ff;
+}
+.pokemon-types__container .type-dragon {
+  color: #FFF;
+  background: #6F35FC;
+}
+
+.type-dark {
+  color: #705746;
+}
+.type-dark button {
+  color: #705746;
+  border: 1px solid #705746;
+}
+.type-dark button:hover, .type-dark button:focus {
+  background: #705746;
+  color: #FFF;
+}
+.type-dark.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #705746;
+}
+.type-dark.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: #c6b1a3;
+}
+.pokemon-types__container .type-dark {
+  color: #FFF;
+  background: #705746;
+}
+
+.type-steel {
+  color: #B7B7CE;
+}
+.type-steel button {
+  color: #B7B7CE;
+  border: 1px solid #B7B7CE;
+}
+.type-steel button:hover, .type-steel button:focus {
+  background: #B7B7CE;
+  color: #FFF;
+}
+.type-steel.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #B7B7CE;
+}
+.type-steel.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: white;
+}
+.pokemon-types__container .type-steel {
+  color: #FFF;
+  background: #B7B7CE;
+}
+
+.type-fairy {
+  color: #D685AD;
+}
+.type-fairy button {
+  color: #D685AD;
+  border: 1px solid #D685AD;
+}
+.type-fairy button:hover, .type-fairy button:focus {
+  background: #D685AD;
+  color: #FFF;
+}
+.type-fairy.pokedex-pokemonList-container {
+  color: #FFF;
+  background: #D685AD;
+}
+.type-fairy.pokedex-pokemonList-container .pokedex-pokemonList__elem::before {
+  background: white;
+}
+.pokemon-types__container .type-fairy {
+  color: #FFF;
+  background: #D685AD;
+}
+
+.version-red {
+  color: #ff1111;
+}
+.version-red button {
+  color: #ff1111;
+  border: 1px solid #ff1111;
+}
+.version-red button:hover, .version-red button:focus {
+  color: #FFF;
+  background: #ff1111;
+}
+
+.version-blue {
+  color: #1111ff;
+}
+.version-blue button {
+  color: #1111ff;
+  border: 1px solid #1111ff;
+}
+.version-blue button:hover, .version-blue button:focus {
+  color: #FFF;
+  background: #1111ff;
+}
+
+.version-yellow {
+  color: #ffd733;
+}
+.version-yellow button {
+  color: #ffd733;
+  border: 1px solid #ffd733;
+}
+.version-yellow button:hover, .version-yellow button:focus {
+  color: #FFF;
+  background: #ffd733;
+}
+
+.version-firered {
+  color: #ff7327;
+}
+.version-firered button {
+  color: #ff7327;
+  border: 1px solid #ff7327;
+}
+.version-firered button:hover, .version-firered button:focus {
+  color: #FFF;
+  background: #ff7327;
+}
+
+.version-leafgreen {
+  color: #00dd00;
+}
+.version-leafgreen button {
+  color: #00dd00;
+  border: 1px solid #00dd00;
+}
+.version-leafgreen button:hover, .version-leafgreen button:focus {
+  color: #FFF;
+  background: #00dd00;
+}
+
+.version-gold {
+  color: #daa520;
+}
+.version-gold button {
+  color: #daa520;
+  border: 1px solid #daa520;
+}
+.version-gold button:hover, .version-gold button:focus {
+  color: #FFF;
+  background: #daa520;
+}
+
+.version-silver {
+  color: #c0c0c0;
+}
+.version-silver button {
+  color: #c0c0c0;
+  border: 1px solid #c0c0c0;
+}
+.version-silver button:hover, .version-silver button:focus {
+  color: #FFF;
+  background: #c0c0c0;
+}
+
+.version-crystal {
+  color: #4fd9ff;
+}
+.version-crystal button {
+  color: #4fd9ff;
+  border: 1px solid #4fd9ff;
+}
+.version-crystal button:hover, .version-crystal button:focus {
+  color: #FFF;
+  background: #4fd9ff;
+}
+
+.version-heartgold {
+  color: #b69e00;
+}
+.version-heartgold button {
+  color: #b69e00;
+  border: 1px solid #b69e00;
+}
+.version-heartgold button:hover, .version-heartgold button:focus {
+  color: #FFF;
+  background: #b69e00;
+}
+
+.version-soulsilver {
+  color: #c0c0e1;
+}
+.version-soulsilver button {
+  color: #c0c0e1;
+  border: 1px solid #c0c0e1;
+}
+.version-soulsilver button:hover, .version-soulsilver button:focus {
+  color: #FFF;
+  background: #c0c0e1;
+}
+
+.version-ruby {
+  color: #a00000;
+}
+.version-ruby button {
+  color: #a00000;
+  border: 1px solid #a00000;
+}
+.version-ruby button:hover, .version-ruby button:focus {
+  color: #FFF;
+  background: #a00000;
+}
+
+.version-sapphire {
+  color: #0000a0;
+}
+.version-sapphire button {
+  color: #0000a0;
+  border: 1px solid #0000a0;
+}
+.version-sapphire button:hover, .version-sapphire button:focus {
+  color: #FFF;
+  background: #0000a0;
+}
+
+.version-emerald {
+  color: #00a000;
+}
+.version-emerald button {
+  color: #00a000;
+  border: 1px solid #00a000;
+}
+.version-emerald button:hover, .version-emerald button:focus {
+  color: #FFF;
+  background: #00a000;
+}
+
+.version-omegaRuby {
+  color: #cf3025;
+}
+.version-omegaRuby button {
+  color: #cf3025;
+  border: 1px solid #cf3025;
+}
+.version-omegaRuby button:hover, .version-omegaRuby button:focus {
+  color: #FFF;
+  background: #cf3025;
+}
+
+.version-alphaSapphire {
+  color: #1768d1;
+}
+.version-alphaSapphire button {
+  color: #1768d1;
+  border: 1px solid #1768d1;
+}
+.version-alphaSapphire button:hover, .version-alphaSapphire button:focus {
+  color: #FFF;
+  background: #1768d1;
+}
+
+.version-diamond {
+  color: #aaaaff;
+}
+.version-diamond button {
+  color: #aaaaff;
+  border: 1px solid #aaaaff;
+}
+.version-diamond button:hover, .version-diamond button:focus {
+  color: #FFF;
+  background: #aaaaff;
+}
+
+.version-pearl {
+  color: #ffaaaa;
+}
+.version-pearl button {
+  color: #ffaaaa;
+  border: 1px solid #ffaaaa;
+}
+.version-pearl button:hover, .version-pearl button:focus {
+  color: #FFF;
+  background: #ffaaaa;
+}
+
+.version-platinum {
+  color: #999999;
+}
+.version-platinum button {
+  color: #999999;
+  border: 1px solid #999999;
+}
+.version-platinum button:hover, .version-platinum button:focus {
+  color: #FFF;
+  background: #999999;
+}
+
+.version-black, .version-black2 {
+  color: #444444;
+}
+.version-black button, .version-black2 button {
+  color: #444444;
+  border: 1px solid #444444;
+}
+.version-black button:hover, .version-black button:focus, .version-black2 button:hover, .version-black2 button:focus {
+  color: #FFF;
+  background: #444444;
+}
+
+.version-white, .version-white2 {
+  color: #e1e1e1;
+}
+.version-white button, .version-white2 button {
+  color: #e1e1e1;
+  border: 1px solid #e1e1e1;
+}
+.version-white button:hover, .version-white button:focus, .version-white2 button:hover, .version-white2 button:focus {
+  color: #FFF;
+  background: #e1e1e1;
+}
+
+.version-x {
+  color: #6376b8;
+}
+.version-x button {
+  color: #6376b8;
+  border: 1px solid #6376b8;
+}
+.version-x button:hover, .version-x button:focus {
+  color: #FFF;
+  background: #6376b8;
+}
+
+.version-y {
+  color: #ed5540;
+}
+.version-y button {
+  color: #ed5540;
+  border: 1px solid #ed5540;
+}
+.version-y button:hover, .version-y button:focus {
+  color: #FFF;
+  background: #ed5540;
+}
+
+.version-sun {
+  color: #f1912b;
+}
+.version-sun button {
+  color: #f1912b;
+  border: 1px solid #f1912b;
+}
+.version-sun button:hover, .version-sun button:focus {
+  color: #FFF;
+  background: #f1912b;
+}
+
+.version-moon {
+  color: #5599ca;
+}
+.version-moon button {
+  color: #5599ca;
+  border: 1px solid #5599ca;
+}
+.version-moon button:hover, .version-moon button:focus {
+  color: #FFF;
+  background: #5599ca;
+}
+
+.version-ultraSun {
+  color: #e35627;
+}
+.version-ultraSun button {
+  color: #e35627;
+  border: 1px solid #e35627;
+}
+.version-ultraSun button:hover, .version-ultraSun button:focus {
+  color: #FFF;
+  background: #e35627;
+}
+
+.version-ultraMoon {
+  color: #1f62a3;
+}
+.version-ultraMoon button {
+  color: #1f62a3;
+  border: 1px solid #1f62a3;
+}
+.version-ultraMoon button:hover, .version-ultraMoon button:focus {
+  color: #FFF;
+  background: #1f62a3;
+}
+
+.version-sword {
+  color: #00a1e9;
+}
+.version-sword button {
+  color: #00a1e9;
+  border: 1px solid #00a1e9;
+}
+.version-sword button:hover, .version-sword button:focus {
+  color: #FFF;
+  background: #00a1e9;
+}
+
+.version-shield {
+  color: #e5015a;
+}
+.version-shield button {
+  color: #e5015a;
+  border: 1px solid #e5015a;
+}
+.version-shield button:hover, .version-shield button:focus {
+  color: #FFF;
+  background: #e5015a;
+}
+
+/*# sourceMappingURL=/styles.8206c151.css.map */
