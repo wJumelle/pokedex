@@ -162,6 +162,10 @@ h2 {
         .pokemon-types__container {
             font-weight: 700;
             
+            ul {
+                list-style-type: none;
+            }
+
             li {
                 padding: 0.25rem;
             }
