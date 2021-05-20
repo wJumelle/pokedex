@@ -1,5 +1,5 @@
 //Fix regenerator-runtime error caused by async function
-import 'regenerator-runtime/runtime';
+//import 'regenerator-runtime/runtime';
 
 /***************
  * CLASSES

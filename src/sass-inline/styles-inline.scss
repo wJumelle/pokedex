@@ -1,0 +1,1128 @@
+/***************
+ = Color vars */
+
+//Types
+$normal: #A8A77A;
+$fire: #EE8130;
+$water: #6390F0;
+$electric: #F7D02C;
+$grass: #7AC74C;
+$ice: #96D9D6;
+$fighting: #C22E28;
+$poison: #A33EA1;
+$ground: #E2BF65;
+$flying: #A98FF3;
+$psychic: #F95587;
+$bug: #A6B91A;
+$rock: #B6A136;
+$ghost: #735797;
+$dragon: #6F35FC;
+$dark: #705746;
+$steel: #B7B7CE;
+$fairy: #D685AD;
+
+//Gen1
+$version-red: #ff1111;
+$version-blue: #1111ff;
+$version-yellow: #ffd733;
+$version-fireRed: #ff7327;
+$version-leafGreen: #00dd00;
+
+//version2
+$version-gold: #daa520;
+$version-silver: #c0c0c0;
+$version-crystal: #4fd9ff;
+$version-heartgold: #b69e00;
+$version-soulsilver: #c0c0e1;
+
+//version3
+$version-ruby: #a00000;
+$version-sapphire: #0000a0;
+$version-emerald: #00a000;
+$version-omegaRuby: #cf3025;
+$version-alphaSapphire: #1768d1;
+
+//version4
+$version-diamond: #aaaaff;
+$version-pearl: #ffaaaa;
+$version-platinum: #999999;
+
+//version5
+$version-black: #444444;
+$version-white: #e1e1e1;
+
+//version6
+$version-x: #6376b8;
+$version-y: #ed5540;
+
+//version7
+$version-sun: #f1912b;
+$version-moon: #5599ca;
+$version-ultraSun: #e35627;
+$version-ultraMoon: #1f62a3;
+
+//version8
+$version-sword: #00a1e9;
+$version-shield: #e5015a;
+
+/***************
+ = Fonts vars */
+$font-size: 18px;
+$ff: 'Poppins', sans-serif;
+
+@keyframes loader {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/**********************
+ * RESET
+*********************/
+*, *::after, *::before {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    font-family: $ff;
+    font-size: $font-size;
+    line-height: 1.5em;
+}
+
+button {
+    border: 1px solid #000;
+    background: none;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+[data-pokedex-container="pokemonFromTypeList"] {
+    .pokedex-pokemonList {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        list-style-type: none;
+        text-align:center;
+    }
+    
+    .pokedex-pokemonList__elem {
+        position: relative;
+        background: #FFF;
+        border-radius: 25px;
+        box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.5);
+        -webkit-box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.5);
+        -moz-box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.5);
+        padding: 2rem;
+        color: #000;
+
+        &::before {
+            content: '';
+            width: 70%;
+            height: 90%;
+            max-height: 200px;
+            display: block;
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            z-index: 5;
+            transition: top .25s, width .25s, height .25s; 
+        }
+
+        &:hover::before {
+            width: 100%;
+            top: 0;
+            height: 100%;
+            max-height: 100%;
+            border-radius: 25px;
+        }
+
+        & > * {
+            position: relative;
+            z-index: 10;
+        }
+    
+        img {
+            z-index: 20;
+            display: block;
+            max-width: 150px;
+            margin: 0 auto 2rem;
+        }
+        
+        .pokemon-types__container {
+            font-weight: 700;
+            
+            li {
+                padding: 0.25rem;
+            }
+        }
+    }
+}
+
+.pokeball-container {
+    .pokeball {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 150px; height: 150px;
+        background: linear-gradient(red 50%, white 50%);
+        border-radius: 50%;
+        border: 8px solid black;
+        animation-name: loader;
+        animation-duration: 1.5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 8px;
+            background: black;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    .pokeball-button {
+        width: 40px;
+        height: 40px;
+        background: #FFF;
+        border-radius: 50%;
+        border: 8px solid black;
+        position: relative;
+        z-index: 20;
+    }
+
+    .pokedex-cpt {
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align:center;
+
+        span {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    }
+}
+
+.pokedex-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../img/PokemonSymbol.svg');
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: bottom 2500% right -20%;
+
+    h1 {
+        display: block;
+    }
+
+    ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 50%;
+
+        li {
+            display: inline-block;
+            padding: 10px 20px;
+
+            button {
+                background: #FFF;
+                padding: 10px 20px;
+                font-weight: bold;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                transition: background-color .25s, color .25s;
+            }
+        }
+    }
+}
+
+.pokedex-container:nth-child(odd) {
+    background-color: #E6EFE9;
+}
+
+.pokedex-container:nth-child(even) {
+    background-color: #CAD9E2;
+}
+
+.pokedex-pokemonList-container {
+    padding: 2% 5%;
+
+    h1 {
+        text-align: center;
+        margin-bottom: 1.125rem;
+    }
+}
+
+.type-normal { 
+    color: $normal;
+
+    button {
+        color: $normal;
+        border: 1px solid $normal;
+
+        &:hover, &:focus {
+            background: $normal;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $normal;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($normal, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $normal;
+    }
+}
+.type-fire { 
+    color: $fire;
+
+    button {
+        color: $fire;
+        border: 1px solid $fire;
+
+        &:hover, &:focus {
+            background: $fire;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $fire;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($fire, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $fire;
+    }
+}
+.type-water { 
+    color: $water;
+
+    button {
+        color: $water;
+        border: 1px solid $water;
+
+        &:hover, &:focus {
+            background: $water;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $water;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($water, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $water;
+    }
+}
+.type-electric { 
+    color: $electric;
+
+    button {
+        color: $electric;
+        border: 1px solid $electric;
+
+        &:hover, &:focus {
+            background: $electric;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $electric;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($electric, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $electric;
+    }
+}
+.type-grass { 
+    color: $grass;
+
+    button {
+        color: $grass;
+        border: 1px solid $grass;
+
+        &:hover, &:focus {
+            background: $grass;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $grass;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($grass, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $grass;
+    }
+}
+.type-ice { 
+    color: $ice;
+
+    button {
+        color: $ice;
+        border: 1px solid $ice;
+
+        &:hover, &:focus {
+            background: $ice;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $ice;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($ice, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $ice;
+    }
+}
+.type-fighting { 
+    color: $fighting;
+
+    button {
+        color: $fighting;
+        border: 1px solid $fighting;
+
+        &:hover, &:focus {
+            background: $fighting;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $fighting;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($fighting, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $fighting;
+    }
+}
+.type-poison { 
+    color: $poison;
+
+    button {
+        color: $poison;
+        border: 1px solid $poison;
+
+        &:hover, &:focus {
+            background: $poison;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $poison;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($poison, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $poison;
+    }
+}
+.type-ground { 
+    color: $ground;
+
+    button {
+        color: $ground;
+        border: 1px solid $ground;
+
+        &:hover, &:focus {
+            background: $ground;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $ground;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($ground, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $ground;
+    }
+}
+.type-flying { 
+    color: $flying;
+
+    button {
+        color: $flying;
+        border: 1px solid $flying;
+
+        &:hover, &:focus {
+            background: $flying;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $flying;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($flying, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $flying;
+    }
+}
+.type-psychic { 
+    color: $psychic;
+
+    button {
+        color: $psychic;
+        border: 1px solid $psychic;
+
+        &:hover, &:focus {
+            background: $psychic;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $psychic;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($psychic, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $psychic;
+    }
+}
+.type-bug { 
+    color: $bug;
+
+    button {
+        color: $bug;
+        border: 1px solid $bug;
+
+        &:hover, &:focus {
+            background: $bug;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $bug;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($bug, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $bug;
+    }
+}
+.type-rock { 
+    color: $rock;
+
+    button {
+        color: $rock;
+        border: 1px solid $rock;
+
+        &:hover, &:focus {
+            background: $rock;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $rock;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($rock, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $rock;
+    }
+}
+.type-ghost { 
+    color: $ghost;
+
+    button {
+        color: $ghost;
+        border: 1px solid $ghost;
+
+        &:hover, &:focus {
+            background: $ghost;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $ghost;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($ghost, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $ghost;
+    }
+}
+.type-dragon { 
+    color: $dragon;
+
+    button {
+        color: $dragon;
+        border: 1px solid $dragon;
+
+        &:hover, &:focus {
+            background: $dragon;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $dragon;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($dragon, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $dragon;
+    }
+}
+.type-dark { 
+    color: $dark;
+
+    button {
+        color: $dark;
+        border: 1px solid $dark;
+
+        &:hover, &:focus {
+            background: $dark;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $dark;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($dark, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $dark;
+    }
+}
+.type-steel { 
+    color: $steel;
+
+    button {
+        color: $steel;
+        border: 1px solid $steel;
+
+        &:hover, &:focus {
+            background: $steel;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $steel;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($steel, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $steel;
+    }
+}
+.type-fairy { 
+    color: $fairy;
+
+    button {
+        color: $fairy;
+        border: 1px solid $fairy;
+
+        &:hover, &:focus {
+            background: $fairy;
+            color: #FFF;
+        }
+    }
+
+    &.pokedex-pokemonList-container {
+        color: #FFF;
+        background: $fairy;
+
+        .pokedex-pokemonList__elem::before {
+            background: lighten($fairy, 35%);
+        }
+    }
+
+    .pokemon-types__container & {
+        color: #FFF;
+        background: $fairy;
+    }
+}
+
+.version-red { 
+    color: $version-red;
+
+    button {
+        color: $version-red;
+        border: 1px solid $version-red;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-red;
+        }
+    }
+}
+.version-blue { 
+    color: $version-blue;
+
+    button {
+        color: $version-blue;
+        border: 1px solid $version-blue;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-blue;
+        }
+    }
+}
+.version-yellow { 
+    color: $version-yellow;
+
+    button {
+        color: $version-yellow;
+        border: 1px solid $version-yellow;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-yellow;
+        }
+    }
+}
+.version-firered { 
+    color: $version-fireRed;
+
+    button {
+        color: $version-fireRed;
+        border: 1px solid $version-fireRed;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-fireRed;
+        }
+    }
+}
+.version-leafgreen { 
+    color: $version-leafGreen;
+
+    button {
+        color: $version-leafGreen;
+        border: 1px solid $version-leafGreen;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-leafGreen;
+        }
+    }
+}
+.version-gold {
+    color: $version-gold;
+
+    button {
+        color: $version-gold;
+        border: 1px solid $version-gold;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-gold;
+        }
+    }
+}
+.version-silver {
+    color: $version-silver;
+
+    button {
+        color: $version-silver;
+        border: 1px solid $version-silver;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-silver;
+        }
+    }
+}
+.version-crystal {
+    color: $version-crystal;
+
+    button {
+        color: $version-crystal;
+        border: 1px solid $version-crystal;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-crystal;
+        }
+    }
+}
+.version-heartgold {
+    color: $version-heartgold;
+
+    button {
+        color: $version-heartgold;
+        border: 1px solid $version-heartgold;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-heartgold;
+        }
+    }
+}
+.version-soulsilver {
+    color: $version-soulsilver;
+
+    button {
+        color: $version-soulsilver;
+        border: 1px solid $version-soulsilver;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-soulsilver;
+        }
+    }
+}
+.version-ruby {
+    color: $version-ruby;
+
+    button {
+        color: $version-ruby;
+        border: 1px solid $version-ruby;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-ruby;
+        }
+    }
+}
+.version-sapphire {
+    color: $version-sapphire;
+
+    button {
+        color: $version-sapphire;
+        border: 1px solid $version-sapphire;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-sapphire;
+        }
+    }
+}
+.version-emerald {
+    color: $version-emerald;
+
+    button {
+        color: $version-emerald;
+        border: 1px solid $version-emerald;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-emerald;
+        }
+    }
+}
+.version-omegaRuby {
+    color: $version-omegaRuby;
+
+    button {
+        color: $version-omegaRuby;
+        border: 1px solid $version-omegaRuby;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-omegaRuby;
+        }
+    }
+}
+.version-alphaSapphire {
+    color: $version-alphaSapphire;
+
+    button {
+        color: $version-alphaSapphire;
+        border: 1px solid $version-alphaSapphire;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-alphaSapphire;
+        }
+    }
+}
+.version-diamond {
+    color: $version-diamond;
+
+    button {
+        color: $version-diamond;
+        border: 1px solid $version-diamond;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-diamond;
+        }
+    }
+}
+.version-pearl {
+    color: $version-pearl;
+
+    button {
+        color: $version-pearl;
+        border: 1px solid $version-pearl;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-pearl;
+        }
+    }
+}
+.version-platinum {
+    color: $version-platinum;
+
+    button {
+        color: $version-platinum;
+        border: 1px solid $version-platinum;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-platinum;
+        }
+    }
+}
+.version-black, .version-black2 {
+    color: $version-black;
+
+    button {
+        color: $version-black;
+        border: 1px solid $version-black;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-black;
+        }
+    }
+}
+.version-white, .version-white2 {
+    color: $version-white;
+
+    button {
+        color: $version-white;
+        border: 1px solid $version-white;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-white;
+        }
+    }
+}
+.version-x {
+    color: $version-x;
+
+    button {
+        color: $version-x;
+        border: 1px solid $version-x;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-x;
+        }
+    }
+}
+.version-y {
+    color: $version-y;
+
+    button {
+        color: $version-y;
+        border: 1px solid $version-y;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-y;
+        }
+    }
+}
+.version-sun {
+    color: $version-sun;
+
+    button {
+        color: $version-sun;
+        border: 1px solid $version-sun;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-sun;
+        }
+    }
+}
+.version-moon {
+    color: $version-moon;
+
+    button {
+        color: $version-moon;
+        border: 1px solid $version-moon;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-moon;
+        }
+    }
+}
+.version-ultraSun {
+    color: $version-ultraSun;
+
+    button {
+        color: $version-ultraSun;
+        border: 1px solid $version-ultraSun;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-ultraSun;
+        }
+    }
+}
+.version-ultraMoon {
+    color: $version-ultraMoon;
+
+    button {
+        color: $version-ultraMoon;
+        border: 1px solid $version-ultraMoon;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-ultraMoon;
+        }
+    }
+}
+.version-sword {
+    color: $version-sword;
+
+    button {
+        color: $version-sword;
+        border: 1px solid $version-sword;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-sword;
+        }
+    }
+}
+.version-shield {
+    color: $version-shield;
+
+    button {
+        color: $version-shield;
+        border: 1px solid $version-shield;
+
+        &:hover, &:focus {
+            color: #FFF;
+            background: $version-shield;
+        }
+    }
+}

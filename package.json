@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
-    "sass::v": "sass --version",
-    "sass::w": "sass --watch src/sass:dist/css"
+    "sass_version": "sass --version",
+    "watch": "sass --watch src/sass:dist/css"
   },
   "keywords": [],
   "author": "",
